@@ -1,0 +1,52 @@
+ANSIBLE TOWER HANDSON
+
+	- Create a USER (ansible-tower) with access and secret access key.
+	- Launch a CentOS-7 instance (t2.xLarge, 4vCPU, 16GB memory, keypair, SSH, HTTP, HTTPS, 25 storage space gp2,)
+	- SSH into the instance
+	- sudo yum -y update
+	- sudo yum install epel-release -y
+	- sudo yum install vim -y
+	- sudo yum install ansible -y
+	- curl -O https://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-latest.tar.gz
+	- tar xvf ansible-tower-setup-latest.tar.gz
+	- Ls
+	- cd ansible-tower-setup-3.8.6-2
+	- Ls
+	- vim inventory
+	- Number you lines by typing (:set nu)
+	- Change line 9 that has password
+	- /password
+	- Change all 4 password='Ptwerso1'
+	- sudo ./setup.sh
+	- Let it cook
+	- Create a redhat account (https://www.redhat.com/wapps/ugc/register.html?_flowId=register-flow&_flowExecutionKey=e1s1) confirm email
+	- Subscribe  (https://www.redhat.com/en/technologies/management/ansible/trial)
+	- Copy instance public ip and run in the browser
+	- Log in using instance login information (admin = password)
+	- Obtained subscription by downloading the manifest
+	- Login to tower
+	-	Sign in to github repo
+	-	Create new private repo with read me format
+	-	Click on code and copy http link
+	-	Clone repository in a directory in your local computer using vscode
+	-	git clone “repository link”
+	-	get the absolute path and save.
+	-	Clone prof’s github
+	-	git clone https://github.com/tantuch19/JJTech-Bliss-Ansible-Tower.git
+	-	copy from jjtech-bliss to tower-repo
+	-	while in the tower-repo, 
+	-	git status (files should show red)
+	-	then “git add .” 
+	-	git status (file shows green)
+	-	do a git commit (git commit –m “message”)
+	-	git status
+	-	git push
+	-	go back to ansible tower
+	-	create a source control credential with username and password of github credential
+	-	create AWS credential
+	-	create a project called ec2-provisioning-automation, git SCM type, use Github URL, select SCM credential. Make sure github repo is publicly accessable
+	-	create a template
+	-	Add Survey (Please choose your team, team, BlissBatch, DeveloperTeam, Testingteam)
+	-	You may add as many surveys as needed depending on the arguments you need to provision your resource
+	-	Go to SSM in the console, parameter store, create parameter with ami-id, subnet-id, security group, keypair, 
+	-	Go back to ansible tower and complete the template
