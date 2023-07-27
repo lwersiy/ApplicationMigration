@@ -1,0 +1,29 @@
+Dynamic (inventory )CONFIGURATION MANAGEMENT
+
+In Ansible, Dynamic inventory is generated either by scripts which are written in a programming language like python, php etc. or using available inventory plugins. When using script, they gets all real time data from the target source environments, like Cloud platforms AWS, OpenStack, GCP
+
+	- Provision a control-node with an ubunto instance with ssm-ec2 role
+	- Provison 2 amz linux 2 instances with security group from ubunto instance sg.
+	- Rename instances "hostname control-node"
+	Run the following commands in the control node
+	- Run command "sudo apt update -y"
+	- Run command "sudo apt install -y ansible"
+	- Run command "sudo apt install python-is-python3"
+	- Run command "sudo apt-get install python3-pip -y"
+	- Run command "sudo pip3 install boto"
+	- Run command "sudo pip3 install boto3"
+	- Run command "sudo pip install boto3 botocore"
+	- Run command "ansible-galaxy collection install amazon.aws"
+	- Name your slave instance with the Evn - dev tag
+	- Creat file in control terminal "sudo vi aws_ec2.yml"
+	- Paste and modify the file code below (this is to install the aws plugin)
+	plugin: aws_ec2
+	regions:
+	  - us-west-2
+	filters:
+	  tag:Env:
+	    - dev
+	- 
+	- sudo vi /etc/ansible/ansible.cfg  (uncomment the following lines "inventory = /home/ansadmin/aws_ec2.yml, sudo_user = root, host_key_checking = False")
+	- ansible-inventory -i aws_ec2.yml --list
+	- sudo sed -i 's/^#inventory\s*=.*/inventory       = \/home\/ansadmin\/aws_ec2.yml/' /etc/ansible/ansible.cfg
