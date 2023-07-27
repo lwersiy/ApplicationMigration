@@ -1,0 +1,46 @@
+STATIC (inventory )CONFIGURATION MANAGEMENT
+
+In Ansible, a static inventory file is a plain text file that contains a list of managed hosts declared under a host group using either hostnames or IP addresses
+
+https://docs.google.com/presentation/d/1OcIJMSwaYdkY4VLj4Qv_uG87e5cnMqAa/edit#slide=id.p2
+
+
+	- Run 3 centOS instances
+	- Change host name "sudo hostname control-node". Rename the slave servers as weel
+	- Create a common user in all 3 instances "useradd ansible"
+	- Add a password "passwd ansible"
+	- To change to new user, enter "su ansible"
+	- Change directory to modify the file sshd_config file by using comand "sudo vim /etc/ssh/sshd_config"
+	- :/PasswordAuthentication
+	-  change passwordauthentication to YES
+	- :/PermitRootLogin
+	
+sudo sed -i 's/.*PasswordAuthentication no/Passwordauthentication yes/g' /etc/ssh/sshd_config
+
+
+sudo sed -i 's/.*#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
+	
+sudo echo "ansible  ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
+
+echo "ansible  ALL=(ALL)       NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+
+sudo vim /etc/sudoers
+ansible ALL=(ALL)       ALL
+
+	- sudo service sshd restart
+	- sudo yum install epel-release -y
+	- sudo yum install ansible -y
+	
+	- sudo vim /etc/ansible/hosts
+	- Edit the inventory file  [webservers] (ip addresses)
+	- Save and exit to you local device.
+	- Sign out and log in as ansible user (ssh ansible@public ip)
+	
+	ssh-keygen -t rsa
+	ssh-copy-id ansible@(ip address of slaves)
+	
+	Log in to slaves
+	Ssh ansible@(slaves public ip)
+	
+	Exit back to control-node and ping slave servers
+	"ansible webservers -m ping"
