@@ -1,0 +1,38 @@
+Git Commands
+
+Git offers a wide range of commands to perform various operations within a Git repository. Here is a list of commonly used Git commands:
+1. Initialization:
+	• git init: Create a new Git repository.
+2. Cloning and Configuration:
+	• git clone <repository-url>: Clone a remote repository to create a local copy.
+	• git config: Set or view Git configuration options.. 
+	• git config --global user.name "username"
+	• git config --list
+3. Basic Workflow:
+	• git add <file>: Add a file to the staging area. 
+	• git add .
+	• git commit -m "message": Commit staged changes with a descriptive message.
+	• git status: View the status of files in the working directory.
+	• git diff: Show changes between the working directory and the staging area.
+4. Branching:
+	• git branch: List branches or create a new branch.
+	• git checkout <branch>: Switch to a different branch.
+	• git merge <branch>: Merge changes from another branch into	 the current branch.
+	• git rebase <branch>: Reapply commits from one branch onto another.
+5. History and Inspection:
+	• git log: View commit history.
+	• git show <commit>: Show the details of a specific commit.
+	• git blame <file>: Show who last modified each line of a file.
+6. Remote Repositories:
+	• git remote add <name> <url>: Add a remote repository.
+	• git push <remote> <branch>: Push local commits to a remote repository.
+	• git pull <remote> <branch>: Fetch and merge changes from a remote repository.
+7. Undoing Changes:
+	• git revert <commit>: Create a new commit that undoes the changes of a previous commit.
+	• git reset: Unstage files or move the branch pointer to a previous commit.
+	• git checkout -- <file>: Discard changes in a file in the working directory.
+8. Collaboration:
+	• git fetch: Download changes from a remote repository.
+	• git merge origin/<branch>: Merge changes from a remote branch into the current branch.
+	• git pull: Fetch and merge changes from a remote repository in a single command.
+These are just a few of the commonly used Git commands. Git provides many more commands and options for various scenarios and workflows. You can explore the official Git documentation or use git help or git <command> --help to get detailed information about specific commands and their options.
